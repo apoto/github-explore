@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_explore/model/github_repository.dart';
 import 'package:flutter_github_explore/service/github_service.dart';
+import 'package:flutter_github_explore/view/repo_detail_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final githubServiceProvider = Provider((ref) => GithubService());
@@ -24,7 +25,12 @@ class RepoSearchController extends StateNotifier<RepoSearchState> {
     state = state.copyWith(isLoading: false, repositories: repositories);
   }
 
-  void selectRepository(GithubRepository repository) {
-    // 詳細画面に移動するコードを追加
+  void selectRepository(BuildContext context, GithubRepository repository) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RepoDetailView(repository: repository),
+      ),
+    );
   }
 }

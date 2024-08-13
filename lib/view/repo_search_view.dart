@@ -33,7 +33,7 @@ class RepoSearchView extends ConsumerWidget {
                 final repo = state.repositories[index];
                 return ListTile(
                   title: Text(repo.name),
-                  onTap: () {},
+                  onTap: () => notifier.selectRepository(context, repo),
                 );
               },
             ),
